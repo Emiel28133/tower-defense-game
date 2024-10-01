@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class TowerSpawner : MonoBehaviour
 {
-    public GameObject prefab;
-    public Button spawnButton;
+    public GameObject prefab; // Assign your prefab in the Inspector
+    public Button spawnButton; // Assign your button in the Inspector
     private Camera mainCamera;
     private GameObject spawnedObject;
     private bool isPlacing;
@@ -20,15 +20,22 @@ public class TowerSpawner : MonoBehaviour
         if (isPlacing && spawnedObject != null)
         {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 10f;
+            mousePosition.z = 10f; // Set this to the distance from the camera to the object
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             spawnedObject.transform.position = worldPosition;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) // Left mouse button click
             {
-                isPlacing = false;
-                spawnedObject = null;
-                spawnButton.interactable = true;
+                if (worldPosition.y >= -4.5f)
+                {
+                    isPlacing = false;
+                    spawnedObject = null; // Allow spawning a new object
+                    spawnButton.interactable = true; // Re-enable the button
+                }
+                else
+                {
+                    Debug.Log("Cannot place object below y = -4.5");
+                }
             }
         }
     }
@@ -38,12 +45,12 @@ public class TowerSpawner : MonoBehaviour
         if (!isPlacing)
         {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 10f;
+            mousePosition.z = 10f; // Set this to the distance from the camera to the object
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
             spawnedObject = Instantiate(prefab, worldPosition, Quaternion.identity);
             isPlacing = true;
-            spawnButton.interactable = false;
+            spawnButton.interactable = false; // Disable the button
         }
     }
 }

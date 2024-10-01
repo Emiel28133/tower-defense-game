@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     void MoveTowardsWaypoint()
     {
         // Check if there are waypoints
-        if (waypoints.Length == 0) return;
+        if (waypoints == null || waypoints.Length == 0) return;
 
         // Get the current target waypoint
         Transform targetWaypoint = waypoints[waypointIndex];

@@ -12,13 +12,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sprite-0002
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 72c605746d1bf2a4abd208b14d317239, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 72c605746d1bf2a4abd208b14d317239, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7878350319992209165, guid: 72c605746d1bf2a4abd208b14d317239, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 72c605746d1bf2a4abd208b14d317239, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 72c605746d1bf2a4abd208b14d317239, type: 3}
       propertyPath: m_LocalPosition.x

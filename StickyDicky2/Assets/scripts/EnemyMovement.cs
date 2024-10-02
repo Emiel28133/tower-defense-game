@@ -7,7 +7,18 @@ public class EnemyMovement : MonoBehaviour
     public Transform[] waypoints;  // Array of waypoints (set these in the inspector)
     public float speed = 5f;       // Speed of the enemy movement
 
+    private PlayerHealth playerHealth; // Reference to the PlayerHealth script
     private int waypointIndex = 0; // Index of the current waypoint
+
+    void Start()
+    {
+        // Find the PlayerHealth script in the scene
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        if (playerHealth == null)
+        {
+            Debug.LogError("PlayerHealth script not found in the scene.");
+        }
+    }
 
     void Update()
     {
@@ -36,8 +47,11 @@ public class EnemyMovement : MonoBehaviour
             waypointIndex++;
             if (waypointIndex >= waypoints.Length)
             {
-                // If it reaches the end, you can destroy the enemy or loop the path
-                // For now, destroy the enemy
+                // If it reaches the end, reduce player health and destroy the enemy
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(1);
+                }
                 Destroy(gameObject);
             }
         }

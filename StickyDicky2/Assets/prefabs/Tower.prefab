@@ -100,4 +100,4 @@ MonoBehaviour:
   range: 4
   Bullet: {fileID: 6924343065585002742, guid: a4cfebd102cdd8544a1420d796095b1c, type: 3}
   shootPoint: {fileID: 5778748349772344537}
-  fireRate: 1
+  fireRate: 0.5

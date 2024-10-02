@@ -56,9 +56,11 @@ public class Tower : MonoBehaviour
             target = null;
         }
     }
+
     // Method to shoot a bullet towards the enemy
     void Shoot()
     {
+        Debug.Log("Shooting at target: " + target.name);
         GameObject bulletGO = (GameObject)Instantiate(Bullet, shootPoint.position, shootPoint.rotation);
         Bullets bullet = bulletGO.GetComponent<Bullets>();
 

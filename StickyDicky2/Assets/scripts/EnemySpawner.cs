@@ -9,8 +9,11 @@ public class EnemySpawner : MonoBehaviour
     public float timeBetweenWaves = 10f;  // Time between waves
     public int minEnemiesPerWave = 10;    // Minimum number of enemies per wave
     public int maxEnemiesPerWave = 20;    // Maximum number of enemies per wave
-    int enemiesInThisWave;
+    public float speedIncrement = 0.5f;   // Speed increment after each wave
+
+    private int enemiesInThisWave;
     private bool waveInProgress = false;  // To track if a wave is currently in progress
+    private float currentEnemySpeed = 3f; // Initial speed of the enemies
 
     void Start()
     {
@@ -35,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
 
             // Begin spawning enemies
             waveInProgress = true;
-           
+
             for (int i = 0; i < enemiesInThisWave; i++)
             {
                 // Spawn the enemy
@@ -46,6 +49,7 @@ public class EnemySpawner : MonoBehaviour
                 if (enemyMovement != null)
                 {
                     enemyMovement.waypoints = waypoints; // Assign waypoints to the enemy
+                    enemyMovement.speed = currentEnemySpeed; // Set the current speed
                 }
 
                 // Wait for the next enemy to spawn
@@ -57,6 +61,12 @@ public class EnemySpawner : MonoBehaviour
 
             // Mark wave as finished
             waveInProgress = false;
+
+            // Increase the speed for the next wave
+            currentEnemySpeed += speedIncrement;
+
+            // Update the speed of all active enemies
+            UpdateEnemySpeeds(currentEnemySpeed);
         }
     }
 
@@ -64,5 +74,19 @@ public class EnemySpawner : MonoBehaviour
     {
         // Check if there are no more enemies in the scene
         return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
+    }
+
+    void UpdateEnemySpeeds(float newSpeed)
+    {
+        // Find all enemies in the scene and update their speed
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+            if (enemyMovement != null)
+            {
+                enemyMovement.speed = newSpeed;
+            }
+        }
     }
 }

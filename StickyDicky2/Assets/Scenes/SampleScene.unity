@@ -165,6 +165,7 @@ MonoBehaviour:
   timeBetweenWaves: 10
   minEnemiesPerWave: 10
   maxEnemiesPerWave: 20
+  speedIncrement: 0.5
 --- !u!4 &17191686
 Transform:
   m_ObjectHideFlags: 0
@@ -487,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d89362dc14eba648be6654b2eb6f355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: -20
   healthText: {fileID: 223964898}
 --- !u!4 &312179915
 Transform:

@@ -15,6 +15,10 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealthUI();
     }
 
+    private void Update()
+    {
+        
+    }
     // Method to reduce health
     public void TakeDamage(int amount)
     {
@@ -24,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             // Handle player death (e.g., end game)
-            Debug.Log("Player is dead!");
+            Debug.Log("WASTED");
             LoadGameOverScene();
         }
     }

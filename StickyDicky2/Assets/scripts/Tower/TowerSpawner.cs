@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class TowerSpawner : MonoBehaviour
 {
-    public GameObject prefab; // Assign your prefab in the Inspector
-    public Button spawnButton; // Assign your button in the Inspector
+    [SerializeField] private GameObject prefab; // Assign your prefab in the Inspector
+    [SerializeField] private Button spawnButton; // Assign your button in the Inspector
     private Camera mainCamera;
     private GameObject spawnedObject;
     private bool isPlacing;

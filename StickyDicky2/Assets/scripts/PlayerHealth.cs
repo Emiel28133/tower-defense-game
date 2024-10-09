@@ -4,10 +4,25 @@ using UnityEngine.SceneManagement; // Add this namespace
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startingHealth = 20; // Initial health
-    public Text healthText;         // UI Text to display health
+    private int startingHealth = 20; // Initial health
+    [SerializeField] private Text healthText;         // UI Text to display health
 
     private int currentHealth;
+
+    public int StartingHealth
+    {
+        get { return startingHealth; }
+    }
+
+    public int CurrentHealth
+    {
+        set
+        {
+            currentHealth = value;
+            UpdateHealthUI();
+        }
+    }
+
 
     void Start()
     {
@@ -17,7 +32,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        
+        if (currentHealth <= 0)
+        {
+            // Handle player death (e.g., end game)
+            Debug.Log("WASTED");
+            LoadGameOverScene();
+        }
     }
     // Method to reduce health
     public void TakeDamage(int amount)
@@ -25,12 +45,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         UpdateHealthUI();
 
-        if (currentHealth <= 0)
-        {
-            // Handle player death (e.g., end game)
-            Debug.Log("WASTED");
-            LoadGameOverScene();
-        }
+        
     }
 
     // Method to update the health UI

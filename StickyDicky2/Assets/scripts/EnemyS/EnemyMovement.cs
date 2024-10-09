@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform[] waypoints;  // Array of waypoints (set these in the inspector)
-    public float speed = 5f;       // Speed of the enemy movement
+    [SerializeField] private Transform[] waypoints;  // Array of waypoints (set these in the inspector)
+    [SerializeField] private float speed = 5f;       // Speed of the enemy movement
 
     private PlayerHealth playerHealth; // Reference to the PlayerHealth script
     private int waypointIndex = 0; // Index of the current waypoint
 
+    public Transform[] Waypoints
+    {
+        set { waypoints = value; }
+    }
+
+    public int Speed
+    {
+        set { speed = value; }
+    }
     void Start()
     {
         // Find the PlayerHealth script in the scene

@@ -3,10 +3,10 @@ using UnityEngine;
 public class Bullets : MonoBehaviour
 {
     //public static event Action OnHit;
-    public float speed = 20f;
-    public float explosionRadius = 0f;
-    public GameObject impactEffect;
-    private Transform target;
+    [SerializeField] private float speed = 20f;
+    [SerializeField] private float explosionRadius = 0f;
+    [SerializeField] private GameObject impactEffect;
+    [SerializeField] private Transform target;
 
     // Function to assign a target to the bullet
     public void Seek(Transform _target)

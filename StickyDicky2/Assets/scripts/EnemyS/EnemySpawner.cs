@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;        // Prefab of the enemy to spawn
-    public Transform[] waypoints;         // Array of waypoints to pass to the enemy
-    public float spawnWaitTime = 0.5f;    // Time between each enemy spawn
-    public float timeBetweenWaves = 10f;  // Time between waves
-    public int minEnemiesPerWave = 10;    // Minimum number of enemies per wave
-    public int maxEnemiesPerWave = 20;    // Maximum number of enemies per wave
-    public float speedIncrement = 0.5f;   // Speed increment after each wave
+    [SerializeField] private GameObject enemyPrefab;        // Prefab of the enemy to spawn
+    [SerializeField] private Transform[] waypoints;         // Array of waypoints to pass to the enemy
+    [SerializeField] private float spawnWaitTime = 0.5f;    // Time between each enemy spawn
+    [SerializeField] private float timeBetweenWaves = 10f;  // Time between waves
+    [SerializeField] private int minEnemiesPerWave = 10;    // Minimum number of enemies per wave
+    [SerializeField] private int maxEnemiesPerWave = 20;    // Maximum number of enemies per wave
+    [SerializeField] private float speedIncrement = 0.5f;   // Speed increment after each wave
 
     private int enemiesInThisWave;
     private bool waveInProgress = false;  // To track if a wave is currently in progress
@@ -48,8 +48,8 @@ public class EnemySpawner : MonoBehaviour
                 EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
                 if (enemyMovement != null)
                 {
-                    enemyMovement.waypoints = waypoints; // Assign waypoints to the enemy
-                    enemyMovement.speed = currentEnemySpeed; // Set the current speed
+                    enemyMovement.Waypoints = waypoints; // Assign waypoints to the enemy
+                    enemyMovement.Speed = (int)currentEnemySpeed; // Set the current speed
                 }
 
                 // Wait for the next enemy to spawn
@@ -85,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
             EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
             if (enemyMovement != null)
             {
-                enemyMovement.speed = newSpeed;
+                enemyMovement.Speed = (int)newSpeed;
             }
         }
     }

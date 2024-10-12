@@ -7,11 +7,20 @@ public class Bullets : MonoBehaviour
     [SerializeField] private float explosionRadius = 0f;
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private Transform target;
+    [SerializeField] private MoneySystem moneySystem; // Assign your MoneySystem in the Inspector
 
     // Function to assign a target to the bullet
     public void Seek(Transform _target)
     {
         target = _target;
+    }
+
+    void Start()
+    {
+        if (moneySystem == null)
+        {
+            moneySystem = FindObjectOfType<MoneySystem>();
+        }
     }
 
     void Update()
@@ -42,6 +51,8 @@ public class Bullets : MonoBehaviour
     {
         Damage(target);
         Destroy(gameObject); // Destroy the bullet
+
+        
     }
 
     void Explode()
@@ -60,7 +71,10 @@ public class Bullets : MonoBehaviour
     {
         // Here you can reduce the enemy's health or destroy it
         Destroy(enemy.gameObject); // Just destroying for now
+
+        if (moneySystem != null)
+        {
+            moneySystem.AddMoney(1);
+        }
     }
-
-
 }

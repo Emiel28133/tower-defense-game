@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8191253108062848621}
   - component: {fileID: 6518308175829420256}
-  - component: {fileID: 8828357036808558863}
+  - component: {fileID: 3794658928220380819}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8828357036808558863
+--- !u!114 &3794658928220380819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f376a13f2fc3ea4faa93c168fff7754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   explosionRadius: 0
   impactEffect: {fileID: 0}
+  target: {fileID: 0}
+  moneySystem: {fileID: 0}

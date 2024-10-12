@@ -5,6 +5,7 @@ public class TowerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab; // Assign your prefab in the Inspector
     [SerializeField] private Button spawnButton; // Assign your button in the Inspector
+    [SerializeField] private MoneySystem moneySystem; // Assign your MoneySystem in the Inspector
     private Camera mainCamera;
     private GameObject spawnedObject;
     private bool isPlacing;
@@ -20,7 +21,7 @@ public class TowerSpawner : MonoBehaviour
         if (isPlacing && spawnedObject != null)
         {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 10f; // Set this to the distance from the camera to the object
+            mousePosition.z = 10f; // distance from the camera to the object
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             spawnedObject.transform.position = worldPosition;
 
@@ -42,15 +43,17 @@ public class TowerSpawner : MonoBehaviour
 
     void SpawnObject()
     {
-        if (!isPlacing)
+        if (!isPlacing && moneySystem != null && moneySystem.Money >= 10)
         {
+            Debug.Log("Spawning object");
+
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10f; // Set this to the distance from the camera to the object
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
             spawnedObject = Instantiate(prefab, worldPosition, Quaternion.identity);
             isPlacing = true;
-            spawnButton.interactable = false; // Disable the button
+            moneySystem.SpendMoney();
         }
     }
 }

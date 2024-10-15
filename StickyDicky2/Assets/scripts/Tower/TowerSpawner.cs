@@ -9,6 +9,7 @@ public class TowerSpawner : MonoBehaviour
     private Camera mainCamera;
     private GameObject spawnedObject;
     private bool isPlacing;
+    private const float checkRadius = 0.5f; // Radius for collision check
 
     void Start()
     {
@@ -27,15 +28,16 @@ public class TowerSpawner : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0)) // Left mouse button click
             {
-                if (worldPosition.y >= -4.5f)
+                if (worldPosition.y >= -4.5f && !IsCollidingWithTower(worldPosition))
                 {
                     isPlacing = false;
+                    EnableCollider(spawnedObject, true); // Re-enable the collider
                     spawnedObject = null; // Allow spawning a new object
                     spawnButton.interactable = true; // Re-enable the button
                 }
                 else
                 {
-                    Debug.Log("Cannot place object below y = -4.5");
+                    Debug.Log("Cannot place object here");
                 }
             }
         }
@@ -52,8 +54,25 @@ public class TowerSpawner : MonoBehaviour
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
             spawnedObject = Instantiate(prefab, worldPosition, Quaternion.identity);
+            EnableCollider(spawnedObject, false); // Disable the collider
             isPlacing = true;
             moneySystem.SpendMoney();
+        }
+    }
+
+    private bool IsCollidingWithTower(Vector3 position)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, checkRadius, LayerMask.GetMask("Towers"));
+        Debug.Log($"Checking collision at position {position}, found {colliders.Length} colliders");
+        return colliders.Length > 0;
+    }
+
+    private void EnableCollider(GameObject obj, bool enable)
+    {
+        Collider2D collider = obj.GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = enable;
         }
     }
 }

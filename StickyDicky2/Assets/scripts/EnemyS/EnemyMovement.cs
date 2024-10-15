@@ -49,6 +49,14 @@ public class EnemyMovement : MonoBehaviour
         // Move towards the waypoint
         transform.position += direction * speed * Time.deltaTime;
 
+        // Face the direction of movement (left or right)
+        if (direction.x != 0)
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x = Mathf.Sign(direction.x) * Mathf.Abs(localScale.x);
+            transform.localScale = localScale;
+        }
+
         // Check if the enemy has reached the waypoint
         if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
         {

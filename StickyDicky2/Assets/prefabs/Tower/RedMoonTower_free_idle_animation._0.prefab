@@ -129,9 +129,10 @@ MonoBehaviour:
   range: 2.5
   Bullet: {fileID: 3714471824818381114, guid: 145af47608f3ecc4584cdaf5ffb119e1, type: 3}
   shootPoint: {fileID: 6188526776078501753}
-  fireRate: 0.5
+  baseFireRate: 0.5
   target: {fileID: 7271521190741862559, guid: 4658d6d4b3105dd46a695eb055979ded, type: 3}
   fireCountdown: 0
+  fireRate: 0.5
 --- !u!70 &8476308717067901927
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

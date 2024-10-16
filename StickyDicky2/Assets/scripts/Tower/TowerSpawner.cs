@@ -56,7 +56,7 @@ public class TowerSpawner : MonoBehaviour
             spawnedObject = Instantiate(prefab, worldPosition, Quaternion.identity);
             EnableCollider(spawnedObject, false); // Disable the collider
             isPlacing = true;
-            moneySystem.SpendMoney();
+            moneySystem.SpendMoney(10); // Pass the required amount
         }
     }
 

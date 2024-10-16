@@ -51,8 +51,6 @@ public class Bullets : MonoBehaviour
     {
         Damage(target);
         Destroy(gameObject); // Destroy the bullet
-
-        
     }
 
     void Explode()
@@ -76,5 +74,11 @@ public class Bullets : MonoBehaviour
         {
             moneySystem.AddMoney(1);
         }
+    }
+
+    // New method to increase bullet speed
+    public void IncreaseSpeed(float amount)
+    {
+        speed += amount;
     }
 }

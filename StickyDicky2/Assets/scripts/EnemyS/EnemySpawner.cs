@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI; // Add this to use the UI components
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int minEnemiesPerWave = 10;    // Minimum number of enemies per wave
     [SerializeField] private int maxEnemiesPerWave = 20;    // Maximum number of enemies per wave
     [SerializeField] private float speedIncrement = 0.5f;   // Speed increment after each wave
+    [SerializeField] private Text waveText;                 // UI Text component to display the wave number
 
     private int enemiesInThisWave;
     private bool waveInProgress = false;  // To track if a wave is currently in progress
     private float currentEnemySpeed = 3f; // Initial speed of the enemies
+    private int currentWave = 0;          // Current wave number
 
     void Start()
     {
@@ -38,6 +41,10 @@ public class EnemySpawner : MonoBehaviour
 
             // Begin spawning enemies
             waveInProgress = true;
+
+            // Increment the wave number and update the UI text
+            currentWave++;
+            waveText.text = "Wave: " + currentWave;
 
             for (int i = 0; i < enemiesInThisWave; i++)
             {

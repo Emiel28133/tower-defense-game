@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     private int startingHealth = 20; // Initial health
     [SerializeField] private Text healthText;         // UI Text to display health
 
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
 
     public int StartingHealth
     {

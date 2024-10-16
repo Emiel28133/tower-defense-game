@@ -27,7 +27,7 @@ isse Link: https://github.com/Emiel28133/StickyDicky/issues
 
 ## Leerdoel 6: "Game design met onderbouwing":
 
-Designs link: 
+Designs link: https://github.com/Emiel28133/StickyDicky/blob/main/StickyDicky2/GameDesign/Game.jpg
 
 ## Leerdoel 7: "Class Diagram voor volledige codebase":
 

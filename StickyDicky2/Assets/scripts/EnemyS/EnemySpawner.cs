@@ -46,6 +46,19 @@ public class EnemySpawner : MonoBehaviour
             currentWave++;
             waveText.text = "Wave: " + currentWave;
 
+            // Adjust the number of enemies and spawn wait time after wave 30
+            if (currentWave > 30)
+            {
+                minEnemiesPerWave += 2;
+                maxEnemiesPerWave += 2;
+                spawnWaitTime = Mathf.Max(0.05f, spawnWaitTime - 0.05f); // Ensure spawnWaitTime doesn't go below 0.1
+            }
+            else
+            {
+                // Increase the speed for the next wave
+                currentEnemySpeed += speedIncrement;
+            }
+
             for (int i = 0; i < enemiesInThisWave; i++)
             {
                 // Spawn the enemy
@@ -68,9 +81,6 @@ public class EnemySpawner : MonoBehaviour
 
             // Mark wave as finished
             waveInProgress = false;
-
-            // Increase the speed for the next wave
-            currentEnemySpeed += speedIncrement;
 
             // Update the speed of all active enemies
             UpdateEnemySpeeds(currentEnemySpeed);

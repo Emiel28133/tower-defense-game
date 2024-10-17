@@ -3,8 +3,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public float fireRateUpgrade = 2f; // Example fire rate upgrade value
-    public float bulletSpeedUpgrade = 5f; // Example bullet speed upgrade value
+    public float fireRateUpgrade = 2f; // fire rate upgrade value
+    public float bulletSpeedUpgrade = 5f; // bullet speed upgrade value
     private MoneySystem moneySystem;
 
     void Awake()

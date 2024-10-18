@@ -28,7 +28,7 @@ public class TowerSpawner : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0)) // Left mouse button click
             {
-                if (worldPosition.y >= -4.5f && !IsCollidingWithTower(worldPosition))
+                if (!IsCollidingWithTower(worldPosition))
                 {
                     isPlacing = false;
                     EnableCollider(spawnedObject, true); // Re-enable the collider

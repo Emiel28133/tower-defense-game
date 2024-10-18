@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesInThisWave;
     private bool waveInProgress = false;  // To track if a wave is currently in progress
     private float currentEnemySpeed = 3f; // Initial speed of the enemies
-    private int currentWave = 0;          // Current wave number
+    [SerializeField] private int currentWave = 0;          // Current wave number
 
     void Start()
     {

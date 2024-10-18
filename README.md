@@ -6,8 +6,9 @@ Dit is mijn Tower Defence game.
 
 ## Leerdoel 1: "DRY SRP Scripts":
 
+dit script is dry omdat er functions in zitten die ik in meedrere scriptss aanroep.
+en dit script is srp omdat het een script is voor een specifieke feature namenlijk de money system.
 Script link: https://github.com/Emiel28133/StickyDicky/blob/main/StickyDicky2/Assets/scripts/MoneySystem.cs
-
 
 ## Leerdoel 2: "Projectmappen":
 
@@ -19,6 +20,7 @@ releases link: https://github.com/Emiel28133/StickyDicky/releases/tag/1.0
 
 ## Leerdoel 4: "Game met Sprites(animations) en Textures":
 
+ik heb de sprites en de animations in een map omdat het op die manier toegankelijker is voor mij.
 Textures link: https://github.com/Emiel28133/StickyDicky/tree/main/StickyDicky2/Assets/sprites
 
 ## Leerdoel 5: "Issues met debug screenshots":

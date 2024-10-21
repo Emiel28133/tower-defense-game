@@ -16,7 +16,7 @@ Mappen link: https://github.com/Emiel28133/StickyDicky/tree/main/StickyDicky2
 
 ## Leerdoel 3: "Build":
 
-releases link: https://github.com/Emiel28133/StickyDicky/releases/tag/1.0
+releases link: https://github.com/Emiel28133/StickyDicky/releases/tag/3.0
 
 ## Leerdoel 4: "Game met Sprites(animations) en Textures":
 

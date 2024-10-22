@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;        // Prefab of the enemy to spawn
     [SerializeField] private Transform[] waypoints;         // Array of waypoints to pass to the enemy
     [SerializeField] private float spawnWaitTime = 0.5f;    // Time between each enemy spawn
-    [SerializeField] private float timeBetweenWaves = 10f;  // Time between waves
+    [SerializeField] private float timeBetweenWaves = 5f;  // Time between waves
     [SerializeField] private int minEnemiesPerWave = 10;    // Minimum number of enemies per wave
     [SerializeField] private int maxEnemiesPerWave = 20;    // Maximum number of enemies per wave
     [SerializeField] private float speedIncrement = 0.5f;   // Speed increment after each wave
@@ -33,10 +33,18 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)  // Infinite loop for continuous waves
         {
-            // Wait for 10 seconds between waves
-            if (waveInProgress == false)
+            // Wait between waves
+            if (waveInProgress == false && currentWave < 30)
             {
                 yield return new WaitForSeconds(timeBetweenWaves);
+            }
+            else if (waveInProgress == false && currentWave >= 30)
+            {
+                yield return new WaitForSeconds(2f);
+            }
+            else if (waveInProgress == false && currentWave <= 1)
+            {
+                yield return new WaitForSeconds(10f);
             }
 
             // Begin spawning enemies

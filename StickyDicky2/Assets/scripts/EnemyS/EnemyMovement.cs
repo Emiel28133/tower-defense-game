@@ -58,8 +58,9 @@ public class EnemyMovement : MonoBehaviour
         }
 
         // Check if the enemy has reached the waypoint
-        if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
+        if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.2f) // Increased from 0.1f to 0.2f
         {
+            Debug.Log("Waypoint reached: " + waypointIndex);
             // Move to the next waypoint, or stop if at the end
             waypointIndex++;
             if (waypointIndex >= waypoints.Length)
@@ -73,4 +74,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
+
+
+
 }

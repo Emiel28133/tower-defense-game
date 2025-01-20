@@ -16,7 +16,14 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesInThisWave;
     private bool waveInProgress = false;  // To track if a wave is currently in progress
     private float currentEnemySpeed = 3f; // Initial speed of the enemies
-    [SerializeField] private int currentWave = 0;          // Current wave number
+    [SerializeField] private WaveType currentWave = WaveType.Initial; // Current wave type
+
+    private enum WaveType
+    {
+        Initial,
+        Regular,
+        Advanced
+    }
 
     void Start()
     {
@@ -29,33 +36,37 @@ public class EnemySpawner : MonoBehaviour
         enemiesInThisWave = Random.Range(minEnemiesPerWave, maxEnemiesPerWave);
     }
 
+    //enumerator to spawn waves of enemies
     IEnumerator SpawnWaves()
     {
         while (true)  // Infinite loop for continuous waves
         {
             // Wait between waves
-            if (waveInProgress == false && currentWave < 30)
+            if (waveInProgress == false)
             {
-                yield return new WaitForSeconds(timeBetweenWaves);
-            }
-            else if (waveInProgress == false && currentWave >= 30)
-            {
-                yield return new WaitForSeconds(2f);
-            }
-            else if (waveInProgress == false && currentWave <= 1)
-            {
-                yield return new WaitForSeconds(10f);
+                switch (currentWave)
+                {
+                    case WaveType.Initial:
+                        yield return new WaitForSeconds(10f);
+                        break;
+                    case WaveType.Regular:
+                        yield return new WaitForSeconds(timeBetweenWaves);
+                        break;
+                    case WaveType.Advanced:
+                        yield return new WaitForSeconds(2f);
+                        break;
+                }
             }
 
             // Begin spawning enemies
             waveInProgress = true;
 
             // Increment the wave number and update the UI text
-            currentWave++;
+            currentWave = GetNextWaveType(currentWave);
             waveText.text = "Wave: " + currentWave;
 
             // Adjust the number of enemies and spawn wait time after wave 30
-            if (currentWave > 30)
+            if (currentWave == WaveType.Advanced)
             {
                 minEnemiesPerWave += 2;
                 maxEnemiesPerWave += 2;
@@ -92,6 +103,21 @@ public class EnemySpawner : MonoBehaviour
 
             // Update the speed of all active enemies
             UpdateEnemySpeeds(currentEnemySpeed);
+        }
+    }
+
+    private WaveType GetNextWaveType(WaveType currentWave)
+    {
+        switch (currentWave)
+        {
+            case WaveType.Initial:
+                return WaveType.Regular;
+            case WaveType.Regular:
+                return WaveType.Advanced;
+            case WaveType.Advanced:
+                return WaveType.Advanced; // Keep it advanced after reaching advanced
+            default:
+                return WaveType.Regular;
         }
     }
 

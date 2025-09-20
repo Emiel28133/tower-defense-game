@@ -1,48 +1,19 @@
-# BO-Tower-Defence
+# Tower Defense (Unity)
 
-Dit is mijn Tower Defence game.
+Een compacte tower defense game gebouwd in Unity als beroepsopdracht. Je plaatst één type toren dat automatisch schiet. Met verdiend geld koop je een globale upgrade die de aanvalssnelheid (attack speed) van al je torens verhoogt. Overleef steeds moeilijkere golven om te winnen.
 
-# Leerdoelen bewijs:
 
-## Leerdoel 1: "DRY SRP Scripts":
+## Hoe speel je?
+1. Start een level en bekijk het pad van de vijanden naar je basis.
+2. Plaats torens op toegestane bouwplekken. Torens schieten automatisch op vijanden in bereik.
+3. Versla vijanden om geld te verdienen.
+4. Gebruik je geld om de globale attack‑speed upgrade te kopen (verhoogt de vuursnelheid van alle torens).
+5. Overleef alle waves. Als te veel vijanden je basis bereiken, verlies je levens en uiteindelijk de game.
 
-dit script is dry omdat er functions in zitten die ik in meedrere scriptss aanroep.
-en dit script is srp omdat het een script is voor een specifieke feature namenlijk de money system.
-Script link: https://github.com/Emiel28133/StickyDicky/blob/main/StickyDicky2/Assets/scripts/MoneySystem.cs
+## Belangrijkste features
+- Eén torentype dat automatisch schiet
+- Globale upgrade: verhoogt de attack speed van alle torens
+- Waves met oplopende moeilijkheid
+- HUD met geld, levens en wave‑informatie
+- Basisplaatsing met bereikcontrole (range) en eenvoudige feedback
 
-## Leerdoel 2: "Projectmappen":
-
-Mappen link: https://github.com/Emiel28133/StickyDicky/tree/main/StickyDicky2
-
-## Leerdoel 3: "Build":
-
-releases link: https://github.com/Emiel28133/StickyDicky/releases/tag/3.0
-
-## Leerdoel 4: "Game met Sprites(animations) en Textures":
-
-ik heb de sprites en de animations in een map omdat het op die manier toegankelijker is voor mij.
-Textures link: https://github.com/Emiel28133/StickyDicky/tree/main/StickyDicky2/Assets/sprites
-
-## Leerdoel 5: "Issues met debug screenshots":
-
-isse Link: https://github.com/Emiel28133/StickyDicky/issues
-
-## Leerdoel 6: "Game design met onderbouwing":
-
-Designs link: https://github.com/Emiel28133/StickyDicky/blob/main/StickyDicky2/GameDesign/Game.jpg
-
-## Leerdoel 7: "Class Diagram voor volledige codebase":
-
-Moet nog komen
-
-## Leerdoel 8: "Prototype test video":
-
-Moet nog komen
-
-## Leerdoel 9: "SCRUM planning inschatting":
-
-Moet  nog komen
-
-## Leerdoel 10: "Gitflow conventions":
-
-Moet nog komen
